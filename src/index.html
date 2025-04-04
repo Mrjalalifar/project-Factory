@@ -1,0 +1,755 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/output.css">
+    <title>Avada Factory</title>
+    <style>
+        @keyframes ticker {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .ticker-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+        }
+        .ticker {
+            display: flex;
+            gap: 1rem;
+            min-width: 200%;
+            animation: ticker 10s linear infinite;
+        }
+        .outline-text {
+            color: transparent; 
+            -webkit-text-stroke: 2px blue;
+            font-weight: bold;
+        }
+        @keyframes float {
+      0% { left: 0; }
+      50% { left: calc(100% - 150px); }
+      100% { left: 0; }
+    }
+    .animate-float {
+      animation: float 5s linear infinite;
+    }
+    .bg-custom {
+  background-image: url('./img/bg-black.svg');
+}
+    .bg-blue{
+        background-image: url('./img/bg-svg.svg');
+    }
+    .myfooter {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            bottom: 30px;
+            right: 30px;
+            position: fixed;
+            z-index: 110;
+            &:hover{
+                >img,&::before{
+                    animation-play-state: paused;
+                }
+                >a{
+                    right: 115%;
+                }
+            }
+            >a{
+                right: 50%;
+                text-decoration: none;
+                position: absolute;
+                transition: 1s;
+                >svg{
+                    width: 30px;
+                    height: 30px;
+                }
+                &:nth-of-type(1){
+                    top: 10%;
+                    transition-delay: 0.2s;
+                }
+                &:nth-of-type(2){
+                    top: 35%;
+                    transition-delay: 0.4s;
+                }
+                &:nth-of-type(3){
+                    top: 60%;
+                    transition-delay: 0.6s;
+                }
+                &:nth-of-type(4){
+                    top: 85%;
+                    transition-delay: 0.8s;
+                }
+            }
+            &::before{
+                content: '';
+                width: 110%;
+                height: 110%;
+                left: -5%;
+                top: -5%;
+                position: absolute;
+                background-color: black;
+                animation: befor  ease-out infinite alternate 7s;
+
+            }
+
+            >img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                animation: img ease-out infinite alternate 7s;
+
+            }
+        }
+
+
+        @keyframes img{
+            0%{border-radius: 18% 82% 22% 78% / 75% 18% 82% 25% ;}
+            25%{border-radius: 36% 64% 38% 62% / 55% 33% 67% 45%  ;}
+            50%{border-radius: 58% 42% 59% 41% / 29% 53% 47% 71% ;}
+            75%{border-radius:72% 28% 76% 24% / 19% 76% 24% 81% ;}
+            100%{border-radius:  81% 19% 88% 12% / 12% 82% 18% 88% ;}
+        }
+        @keyframes befor{
+            0%{border-radius: 81% 19% 88% 12% / 12% 82% 18% 88%  ;}
+            25%{border-radius: 18% 82% 22% 78% / 75% 18% 82% 25% ;}
+            50%{border-radius: 36% 64% 38% 62% / 55% 33% 67% 45%  ;}
+            75%{border-radius: 58% 42% 59% 41% / 29% 53% 47% 71%  ;}
+            100%{border-radius: 72% 28% 76% 24% / 19% 76% 24% 81% ;}
+        }
+
+    </style>
+</head>
+
+<body>
+    <main class="w-full h-full 2xl:container mx-auto ">
+        <header class="w-full px-8 md:px-0 md:w-[100%] md:mx-auto h-[100px] flex bg-[#122430] md:fixed 2xl:container z-100 ">
+
+            <figure class="w-[50%] md:w-[25%] h-full flex items-center justify-center ">
+                <img class="md:w-[80%] md:h-[60%]" src="img/facrory-logo.png" alt="">
+            </figure>
+
+            <nav class="md:w-[50%] h-full  hidden md:flex justify-center items-center  capitalize ">
+                <ul class="flex *:mx-2  ">
+
+                    <li class="w-20 h-10"><a class="flex justify-center items-center w-full h-full text-white font-bold mb-4 hover:text-orange-500 duration-300 hover:border-b-1" href="">Home</a></li>
+                    <li class="w-20 h-10"><a class="flex justify-center items-center w-full h-full text-white font-bold mb-4 hover:text-orange-500 duration-300 hover:border-b-1" href="">About</a></li>
+
+                    <li class="w-20 h-10 group">
+                        <a class="flex justify-center items-center w-full h-full text-white font-bold mb-4 hover:text-orange-500 duration-300 hover:border-b-1" href="">Services</a>
+                        <ul class="md:grid md:grid-cols-4 gap-4 md:w-[1200px] md:h-[400px] bg-white opacity-0 -translate-y-[10%]  group-hover:translate-y-0 invisible group-hover:visible  group-hover:opacity-100 duration-300 -translate-x-130 p-2 ">
+                            <li>
+                                <figure class="overflow-hidden">
+                                    <img class="hover:scale-110 duration-300" src="img/local-manufacturing-1.jpg" alt="">
+                                </figure>
+                                <figure class=" ">
+                                    <a class="w-fit flex justify-center items-center text-xl py-1 mx-auto border-b-2 border-dotted hover:border-none hover:underline duration-300 hover:text-orange-500" href="">manufacturing</a>
+                                    <p class="flex justify-center items-center text-gray-600 py-1 text-center">Top Rated Quality Products</p>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure class="overflow-hidden">
+                                    <img class="hover:scale-110 duration-300" src="img/energy-production-1.jpg" alt="">
+                                </figure>
+                                <figure class=" ">
+                                    <a class="w-fit flex justify-center items-center text-xl py-1 mx-auto border-b-2 border-dotted hover:border-none hover:underline duration-300 hover:text-orange-500" href="">energy plants</a>
+                                    <p class="flex justify-center items-center text-gray-600 py-1 text-center">For A More Greener Tomorrow</p>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure class=" overflow-hidden">
+                                    <img class="hover:scale-110 duration-300" src="img/mining-quarrying-1.jpg" alt="">
+                                </figure>
+                                <figure class=" ">
+                                    <a class="w-fit flex justify-center items-center text-xl py-1 mx-auto border-b-2 border-dotted hover:border-none hover:underline duration-300 hover:text-orange-500" href="">construction</a>
+                                    <p class="flex justify-center items-center text-gray-600 py-1 text-center">Building The Structures Worldwide</p>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure class="overflow-hidden">
+                                    <img class="hover:scale-110 duration-300" src="img/tools-automation-3.jpg" alt="">
+                                </figure>
+                                <figure class=" ">
+                                    <a class="w-fit flex justify-center items-center text-xl py-1 mx-auto border-b-2 border-dotted hover:border-none hover:underline duration-300 hover:text-orange-500" href="">AI robotics</a>
+                                    <p class="flex justify-center items-center text-gray-600 py-1 text-center">Quick Tasks With Intelligence</p>
+                                </figure>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="w-20 h-10 group"><a class="flex justify-center items-center w-full h-full text-white font-bold mb-4 hover:text-orange-500 duration-300 hover:border-b-1" href="">pages</a> 
+                        <ul class=" w-60 h-50 grid grid-rows-3 bg-white opacity-0 -translate-y-[10%]  group-hover:translate-y-0 invisible group-hover:visible  group-hover:opacity-100 duration-300 ">
+                            <li class=""> <a class="bg-white border-1 border-gray-400 w-full h-full pl-4 flex items-center hover:bg-[#457da3] hover:text-white duration-300" href="">FAQ’s</a></li>
+                            <li> <a class="bg-white border-1 border-gray-400 w-full h-full pl-4 flex items-center hover:bg-[#457da3] hover:text-white duration-300" href="">Our Projects</a> </li>
+                            <li><a class="bg-white border-1 border-gray-400 w-full h-full pl-4 flex items-center hover:bg-[#457da3] hover:text-white duration-300" href="">Board of Directors</a> </li>
+                        </ul>
+                    
+                    </li>
+                    <li class="w-20 h-10" ><a class="flex justify-center items-center w-full h-full text-white font-bold mb-4 hover:text-orange-500 duration-300 hover:border-b-1" href="">News</a> </li>
+                    <li class="w-20 h-10"><a class="flex justify-center items-center w-full h-full text-white font-bold mb-4 hover:text-orange-500 duration-300 hover:border-b-1" href="">contact</a>  </li>
+                </ul>
+            </nav>
+
+            <section class="w-[50%] md:w-[25%] h-full flex md:items-center md:justify-evenly justify-end items-center pr-5">
+                <a href="#"class="px-6 py-3 h-10 items-center justify-center text-center border border-withe text-white  duration-300 hover:bg-orange-500  hidden md:flex">Get In Touch</a>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M8.557 2.75H4.682A1.93 1.93 0 0 0 2.75 4.682v3.875a1.94 1.94 0 0 0 1.932 1.942h3.875a1.94 1.94 0 0 0 1.942-1.942V4.682A1.94 1.94 0 0 0 8.557 2.75m10.761 0h-3.875a1.94 1.94 0 0 0-1.942 1.932v3.875a1.943 1.943 0 0 0 1.942 1.942h3.875a1.94 1.94 0 0 0 1.932-1.942V4.682a1.93 1.93 0 0 0-1.932-1.932m0 10.75h-3.875a1.94 1.94 0 0 0-1.942 1.933v3.875a1.94 1.94 0 0 0 1.942 1.942h3.875a1.94 1.94 0 0 0 1.932-1.942v-3.875a1.93 1.93 0 0 0-1.932-1.932M8.557 13.5H4.682a1.943 1.943 0 0 0-1.932 1.943v3.875a1.93 1.93 0 0 0 1.932 1.932h3.875a1.94 1.94 0 0 0 1.942-1.932v-3.875a1.94 1.94 0 0 0-1.942-1.942" />
+                    </svg>
+                </a>
+            </section>
+
+        </header>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////end -->
+        <div class="w-full  bg-[#122430] md:mx-auto py-15 bg-blue  bg-blend-normal  bg-cover bg-center md:bg-[1px_0px]">
+        <section class=" w-full px-8 md:px-0 md:w-[80%] md:mx-auto py-15  text-white capitalize  ">
+            <h1 class="text-5xl md:text-6xl font-bold">precision manufacturing.</h1>
+            <h2 class="text-4xl md:text-5xl font-bold">building the future.</h2>
+            <div class="w-full md:flex md:justify-between">
+                <a class="md:w-55 h-15  flex justify-center items-center mt-10 text-xl bg-[#eb451f] hover:bg-[#ee5519] duration-300 mb-8 w-[60%] " href="">explore factory</a>
+
+                <div class="w-max *:px-4 *:hover:text-blue-500  md:flex md:items-center justify-center *:duration-400 ">
+                    <a class="" href="">P:(800) 555 5555</a>
+
+                    <a class=" " href="">E:hello[at]avada-comp.com</a>
+                </div>
+            </div>
+        </section>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////end -->
+        <div class="w-[85%] h-[170px] md:h-[450px] relative *:absolute mx-auto ">
+            <figure class="w-full h-full img1">
+                <img class="w-full h-full" src="img/factory-hero-image-001.jpg" alt="">
+            </figure>
+            <figure class="w-full h-full img2">
+                <img class="w-full h-full" src="img/factory-hero-image-002.jpg" alt="">
+            </figure>
+            <figure class="w-full h-full img3">
+                <img class="w-full h-full" src="img/factory-hero-image-003.jpg" alt="">
+            </figure>
+        </div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////end -->
+        <section class="w-full px-8 md:px-0 md:w-[80%]   md:mx-auto my-25 grid grid-rows-4 md:grid-rows-1 md:grid-cols-4 gap-5 capitalize ">
+            <div class="group">
+                <span class="text-5xl text-orange-500 font-bold ">01.</span>
+                <h3 class="text-2xl py-4 text-white">meeting innovation</h3>
+                <p class="text-gray-400">Sed ficitur turpis</p>
+                <span class="w-[90%] md:w-[80%] flex pt-4 border-b-8 border-blue-400 group-hover:border-blue-300 duration-300" ></span>
+
+            </div>
+            <div class="group">
+                <span class="text-5xl text-orange-500 font-bold ">02.</span>
+                <h3 class="text-2xl py-4 text-white">trusted worldwide</h3>
+                <p class="text-gray-400">Mauris sed ficitur</p>
+                <span class="w-[90%] md:w-[80%] flex pt-4 border-b-8 border-blue-400 group-hover:border-blue-300 duration-300" ></span>
+
+            </div>
+            <div class="group">
+                <span class="text-5xl text-orange-500 font-bold ">03.</span>
+                <h3 class="text-2xl py-4 text-white">ensuring delivery</h3>
+                <p class="text-gray-400">Sed ficitur turpis</p>
+                <span class="w-[90%] md:w-[80%] flex pt-4 border-b-8 border-blue-400 group-hover:border-blue-300 duration-300" ></span>
+
+            </div>
+            <div class="group">
+                <span class="text-5xl text-orange-500 font-bold ">04.</span>
+                <h3 class="text-2xl py-4 text-white">grow experience</h3>
+                <p class="text-gray-400">Mauris sed ficitur</p>
+                <span class="w-[90%] md:w-[80%] flex pt-4 border-b-8 border-blue-400 group-hover:border-blue-300 duration-300" ></span>
+
+            </div>
+
+        </section>
+    </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////end -->
+        <div class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto py-8 *:py-4 capitalize">
+            <h1 class="w-full text-4xl md:text-6xl  font-bold">Building a sustainable future</h1>
+            <p  class="w-full text-3xl md:text-4xl text-gray-700 ">Focusing on efficiency & performance</p>
+            <p class="text-gray-500">Nunc augue imperdiet in gravida ultrices mauris lectus mauris egestas. Malesuada dui tempus ornare neque dui egestas nulla. Vulputate et nec amet in. Lectus id sit ut non. Eu egestas quis sem risus. Ultricies id neque cras netus.</p>
+            <p class="w-70 border-b-8 border-blue-300"></p>
+        </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////end -->
+        <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto my-2 md:flex capitalize">
+            <div class="w-full md:w-1/2 *:w-full *:flex ">
+                <h3 class="text-xl text-gray-500 md:text-3xl font-bold py-4 ">We build quality products – We Are fully committed to international manufacturing standards ISO 9001.</h3>
+                <span class="text-8xl md:text-9xl text-orange-600 font-bold flex pt-8">25+</span>
+                <p class="text-xl text-gray-400 py-5 md:text-2xl ">Years of Manufacturing Experience & Counting</p>
+            </div>
+            <div class="w-full md:w-1/2 grid md:grid-cols-2  gap-5 items-center  ">
+                <figure class="overflow-hidden">
+                    <img class="hover:scale-110 duration-300" src="img/about-avada-factory-3.jpg" alt="">
+                </figure>
+                <figure class="overflow-hidden">
+                    <img class="hover:scale-110 duration-300" src="img/about-avada-factory-4.jpg" alt="">
+                </figure>
+            </div>
+        </section>
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////end -->
+         <div class="w-full py-5 my-8 hidden md:block">
+            <div class="ticker-wrapper">
+                <div class="ticker *:text-8xl">
+                    <span class="outline-text">Manufacturer of industrial materials & components manufacturer of industrial materials & components</span>
+                </div>
+            </div>
+        </div>
+         <div class="w-full py-5 my-8 hidden md:block">
+            <div class="ticker-wrapper">
+                <div class="ticker *:text-4xl py-2">
+                    <span class="text-gray-600">Where Ideas Take Shape: Your Trusted Manufacturing Hub – Where Ideas Take Shape: Your Trusted Manufacturing Hub – Where Ideas Take Shape: Your Trusted Manufacturing Hub</span>
+                </div>
+            </div>
+        </div>
+         <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////end -->
+          <section class="w-full px-8 md:px-0 md:w-[80%]  md:mx-auto my-8 md:flex items-center capitalize mt-[150px]">
+            <div class="w-full md:w-1/2 *:py-4 *:w-full">
+                <h2 class="text-4xl md:text-5xl font-bold">industries we serve</h2>
+                <p class="text-3xl md:text-4xl text-gray-600">our capabilities</p>
+            </div>
+            <div class="w-1/2 flex justify-end ">
+                <a class="w-55 h-15  flex justify-center items-center mt-10 text-xl bg-[#eb451f] hover:bg-[#ee5519] duration-300 font-bold text-white" href="">More Services</a>
+            </div>
+          </section>
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////end -->
+        <section class="w-full px-8 md:px-0 md:w-[80%]  md:mx-auto  md:grid md:grid-cols-4 md:grid-rows-1 grid-rows-4 md:h-100 gap-4 ">
+
+            <div class="relative group overflow-hidden h-90 md:h-auto my-5 md:my-0">
+                <img class="w-full h-full absolute object-cover " src="img/local-manufacturing-1.jpg" alt="">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="w-full h-full relative *:absolute  *:flex  *:left-6 top-0 left-0 *:duration-300 ">
+                    <h3 class="text-3xl text-white  w-full my-2 bottom-25 group-hover:bottom-35">manufacturing</h3>
+                    <p class="text-xl text-white w-full bottom-18 group-hover:bottom-28">Top Rated Quality Products</p>
+                    <span class="w-30 border-4 border-blue-400 bottom-8 group-hover:bottom-18"></span>
+                    <a class="text-orange-500 px-1 w-fit font-bold -bottom-0 hidden opacity-0 group-hover:opacity-100 group-hover:flex group-hover:bottom-6 " href="">learn more</a>
+                </div>  
+
+            </div>
+            <div class="relative group overflow-hidden h-90 md:h-auto my-5 md:my-0">
+                <img class="w-full h-full absolute object-cover " src="img/mining-quarrying-1.jpg" alt="">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="w-full h-full relative *:absolute  *:flex  *:left-6 top-0 left-0 *:duration-300 ">
+                    <h3 class="text-3xl text-white  w-full my-2 bottom-25 group-hover:bottom-35">construction</h3>
+                    <p class="text-xl text-white w-full bottom-18 group-hover:bottom-28">Building The Structures</p>
+                    <span class="w-30 border-4 border-blue-400 bottom-8 group-hover:bottom-18"></span>
+                    <a class="text-orange-500 px-1 w-fit font-bold -bottom-0 hidden opacity-0 group-hover:opacity-100 group-hover:flex group-hover:bottom-6 " href="">learn more</a>
+                </div>  
+
+            </div>
+            <div class="relative group overflow-hidden h-90 md:h-auto my-5 md:my-0">
+                <img class="w-full h-full absolute object-cover " src="img/energy-production-1.jpg" alt="">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="w-full h-full relative *:absolute  *:flex  *:left-6 top-0 left-0 *:duration-300 ">
+                    <h3 class="text-3xl text-white  w-full my-2 bottom-25 group-hover:bottom-35">energy plants</h3>
+                    <p class="text-xl text-white w-full bottom-18 group-hover:bottom-28">For a greener tomorrow</p>
+                    <span class="w-30 border-4 border-blue-400 bottom-8 group-hover:bottom-18"></span>
+                    <a class="text-orange-500 px-1 w-fit font-bold -bottom-0 hidden opacity-0 group-hover:opacity-100 group-hover:flex group-hover:bottom-6 " href="">learn more</a>
+                </div>  
+
+            </div>
+            <div class="relative group overflow-hidden h-90 md:h-auto my-5 md:my-0">
+                <img class="w-full h-full absolute object-cover " src="img/tools-automation-3.jpg" alt="">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="w-full h-full relative *:absolute  *:flex  *:left-6 top-0 left-0 *:duration-300 ">
+                    <h3 class="text-3xl text-white  w-full my-2 bottom-25 group-hover:bottom-35">AI robotics</h3>
+                    <p class="text-xl text-white w-full bottom-18 group-hover:bottom-28">Tasks With Intelligence</p>
+                    <span class="w-30 border-4 border-blue-400 bottom-8 group-hover:bottom-18"></span>
+                    <a class="text-orange-500 px-1 w-fit font-bold -bottom-0 hidden opacity-0 group-hover:opacity-100 group-hover:flex group-hover:bottom-6  " href="">learn more</a>
+                </div>  
+
+            </div>
+        </section>    
+            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////endd -->
+             <section class="w-full md:w-[80%] md:grid md:grid-cols-4  md:gap-6 md:mx-auto md:my-[100px] capitalize  ">
+                <div class=" text-center *:py-4 my-10 md:my-0">
+                    <div class="w-full flex justify-center">
+                        <img class="animate-bounce" src="img/stats-2.png" alt="">
+                    </div>
+                    <span class="text-7xl text-blue-900 font-bold">3.5K</span>
+                    <p class="text-xl text-gray-600 ">Completed projects</p>
+                </div>
+                <div class=" text-center *:py-4 my-10 md:my-0">
+                    <div class="w-full flex justify-center">
+                        <img class="animate-bounce" src="img/stats-1.png" alt="">
+                    </div>
+                    <span class="text-7xl text-blue-900 font-bold">90%</span>
+                    <p class="text-xl text-gray-600 ">client satisfaction</p>
+                </div>
+                <div class=" text-center *:py-4 my-10 md:my-0">
+                    <div class="w-full flex justify-center">
+                        <img class="animate-bounce" src="img/stats-3.png" alt="">
+                    </div>
+                    <span class="text-7xl text-blue-900 font-bold">7.2M</span>
+                    <p class="text-xl text-gray-600 ">products exported</p>
+                </div>
+                <div class=" text-center *:py-4 my-10 md:my-0">
+                    <div class="w-full flex justify-center">
+                        <img class="animate-bounce" src="img/stats-4.png" alt="">
+                    </div>
+                    <span class="text-7xl text-blue-900 font-bold">4.8K</span>
+                    <p class="text-xl text-gray-600 ">Items In Stock</p>
+                </div>
+             </section>
+            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////endd -->               
+             <section class="w-full px-8 md:px-0 md:w-[80%]  md:mx-auto md:flex capitalize ">
+
+                <div class="w-full md:w-1/2 h-170 md:h-auto">
+                    <figure class="">
+                        <img class="w-full h-full object-cover" src="img/request-quote-2.jpg" alt="">
+                    </figure>
+                </div>
+
+                <div class="w-full md:w-1/2 bg-[#193242] px-15 py-20  ">
+                    <p class="text-orange-500 w-full">Manufacturing & Production</p>
+                    <h2 class="font-bold text-4xl flex py-8 text-white w-full">bridging the gap: today’s ideas, tomorrow’s solutions</h2>
+                    <p class="w-full text-lg text-gray-400 flex my-5 ">Tempus ornare nequ dui egestas nulla. Vulputate nec amet dni. Lectus sit tempor. Eu egestas quis sem risus wesac ultricies quis neque cras netus.</p>
+                    <a class="flex w-[210px] h-[70px] border-1 my-8 justify-center items-center text-xl border-white text-white hover:bg-[#35668d] hover:border-none duration-300 " href="">request a quote</a>
+                </div>
+             </section>
+             <!-- /////////////////////////////////////////////////////////////////////////////////////////////////endd -->         
+              <div class="bg-blue w-full bg-[#8fd4ff] md:mx-auto pb-20 bg-blend-normal  bg-cover bg-center md:bg-[1px_0px]">
+
+                <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto mt-[150px] py-20 *:py-[20px] *:w-full">
+                    <h2 class="text-5xl md:text-6xl font-bold">Factory Projects</h2>
+                    <p class="text-3xl md:text-5xl text-gray-600 capitalize">streamlined manufacturing</p>
+                </section>
+                 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////endd -->  
+                  <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto md:grid md:grid-cols-2 md:grid-rows-2 md:gap-20 ">
+                    <div class="w-full h-[500px] relative group py-4 md:py-0 ">
+                        <div class="w-full h-[30%] *:w-full flex items-center  ">
+                            <div class=" pl-6 py-4  ">
+                                <h3 class="text-2xl border-b-2 text-blue-900 border-dotted w-fit mb-4 font-bold hover:border-b-2 hover:border-dashed hover:text-orange-500 duration-300">Machinery Upgradation</h3>
+                                <p class="text-xl text-gray-600">Tristique fames nibh sem vitae aliquam</p>
+                            </div>
+                        </div>
+                        <figure  class="w-full h-[70%] overflow-hidden">
+                            <img class="w-full h-full object-cover" src="img/machinery-upgradation-1.jpg" alt="">
+                        </figure>
+                        <div class="w-[60px] h-[60px] bg-[#eb451f] bottom-20 right-10 absolute group-hover:bottom-0 duration-500">
+                            <a class="w-full h-full text-white flex justify-center font-bold text-center items-center text-2xl  hover:bg-[#ee5519] duration-300 " href="">≫</a>
+                        </div>
+
+                    </div>
+                    <div class="w-full h-[500px] relative group py-4 md:py-0">
+                        <div class="w-full h-[30%] *:w-full flex items-center  ">
+                            <div class=" pl-6 py-4 ">
+                                <h3 class="text-2xl border-b-2 text-blue-900 border-dotted w-fit mb-4 font-bold hover:border-b-2 hover:border-dashed hover:text-orange-500 duration-300">Proposal Data Analysis</h3>
+                                <p class="text-xl text-gray-600">Nibh sem vitae aliquam tristique fames</p>
+                            </div>
+                        </div>
+                        <figure  class="w-full h-[70%] overflow-hidden">
+                            <img class="w-full h-full object-cover" src="img/proposal-data-analysis.jpg" alt="">
+                        </figure>
+                        <div class="w-[60px] h-[60px] bg-[#eb451f] bottom-20 right-10 absolute group-hover:bottom-0 duration-500">
+                            <a class="w-full h-full text-white flex justify-center font-bold text-center items-center text-2xl  hover:bg-[#ee5519] duration-300 " href="">≫</a>
+                        </div>
+
+                    </div>
+                    <div class="w-full h-[500px] relative group py-4 md:py-0">
+                        <div class="w-full h-[30%] *:w-full flex items-center  ">
+                            <div class=" pl-6 py-4 ">
+                                <h3 class="text-2xl border-b-2 text-blue-900 border-dotted w-fit mb-4 font-bold hover:border-b-2 hover:border-dashed hover:text-orange-500 duration-300">Oil & Gas Industry</h3>
+                                <p class="text-xl text-gray-600">Fames nibh sem vitae aliquam tristique</p>
+                            </div>
+                        </div>
+                        <figure  class="w-full h-[70%] overflow-hidden">
+                            <img class="w-full h-full object-cover" src="img/oil-refinery-construction.jpg" alt="">
+                        </figure>
+                        <div class="w-[60px] h-[60px] bg-[#eb451f] bottom-20 right-10 absolute group-hover:bottom-0 duration-500">
+                            <a class="w-full h-full text-white flex justify-center font-bold text-center items-center text-2xl  hover:bg-[#ee5519] duration-300 " href="">≫</a>
+                        </div>
+
+                    </div>
+                    <div class="w-full h-[500px] relative group py-4 md:py-0">
+                        <div class="w-full h-[30%] *:w-full flex items-center  ">
+                            <div class=" pl-6 py-4 ">
+                                <h3 class="text-2xl border-b-2 text-blue-900 border-dotted w-fit mb-4 font-bold hover:border-b-2 hover:border-dashed hover:text-orange-500 duration-300">Technology Integration</h3>
+                                <p class="text-xl text-gray-600">Fames nibh sem vitae aliquam tristique</p>
+                            </div>
+                        </div>
+                        <figure  class="w-full h-[70%] overflow-hidden">
+                            <img class="w-full h-full object-cover" src="img/technology-improvement-1.jpg" alt="">
+                        </figure>
+                        <div class="w-[60px] h-[60px] bg-[#eb451f] bottom-20 right-10 absolute group-hover:bottom-0 duration-500">
+                            <a class="w-full h-full text-white flex justify-center font-bold text-center items-center text-2xl  hover:bg-[#ee5519] duration-300 " href="">≫</a>
+                        </div>
+
+                    </div>
+
+                  </section>
+                </div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////endd -->
+                  <section class="w-full px-5 md:w-[80%] md:mx-auto mt-[150px] mb-[100px] *:py-[20px]">
+                    <h2 class="text-5xl md:text-6xl font-bold">meet our team</h2>
+                    <p class="text-4xl md:text-5xl text-gray-600 capitalize">exceeding your expectations</p>
+                </section>
+                <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////endd -->
+                 <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto md:grid md:grid-cols-3 gap-12 ">
+                    <div class="relative group overflow-hidden m-8 md:m-0 h-[600px] md:h-auto">
+                        <figure class="w-full h-full">
+                            <img class=" w-full h-full object-cover" src="img/xavier-henry-1.jpg" alt="">
+                        </figure>
+
+                        <div class=" w-full h-[150px] bg-[#e1eaf8] -bottom-40 left-0 absolute pl-7 group-hover:block group-hover:bottom-0 opacity-0 group-hover:opacity-100 transform  duration-500 ">
+                            <h3 class="flex w-full text-3xl font-bold py-2">xavier henry</h3>
+                            <p class="flex w-full text-xl py-2 text-gray-600">Factory Owner</p>
+                            
+                                <div class="flex space-x-4 ">
+                                    <!-- Instagram -->
+                                    <a href="https://instagram.com" target="_blank">
+                                        <svg  xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600 hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8.75 2.25a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Facebook -->
+                                    <a href="https://facebook.com" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600  hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M13.25 22V13h3.09l.46-3.6h-3.55V7.34c0-1.04.29-1.75 1.79-1.75h1.91V2.12A26.57 26.57 0 0 0 14.5 2c-2.6 0-4.38 1.58-4.38 4.48v2.92H7.06V13h3.06v9h3.13Z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Twitter -->
+                                    <a href="https://twitter.com" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600  hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22 5.92a8.4 8.4 0 0 1-2.36.64 4.1 4.1 0 0 0 1.8-2.28 8.23 8.23 0 0 1-2.6 1 4.13 4.13 0 0 0-7 3.76A11.7 11.7 0 0 1 3 4.62a4.1 4.1 0 0 0 1.28 5.5 4.17 4.17 0 0 1-1.87-.5v.05a4.13 4.13 0 0 0 3.3 4.06 4 4 0 0 1-1.86.07 4.14 4.14 0 0 0 3.86 2.85 8.3 8.3 0 0 1-5.1 1.76A8.5 8.5 0 0 1 2 18.07a11.6 11.6 0 0 0 6.29 1.85c7.55 0 11.68-6.2 11.68-11.58v-.52A8 8 0 0 0 22 5.92Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="relative group overflow-hidden m-8 md:m-0 h-[600px] md:h-auto">
+                        <figure class="">
+                            <img class=" w-full h-full object-cover" src="img/martina-neoms-1.jpg" alt="">
+                        </figure>
+
+                        <div class="w-full h-[150px] bg-[#e1eaf8] -bottom-40 left-0 absolute pl-7 group-hover:block group-hover:bottom-0 opacity-0 group-hover:opacity-100 transform  duration-500 ">
+                            <h3 class="flex w-full text-3xl font-bold py-2">martina neoms</h3>
+                            <p class="flex w-full text-xl py-2 text-gray-600">Sales & Marketing</p>
+                            
+                                <div class="flex space-x-4 ">
+                                    <!-- Instagram -->
+                                    <a href="https://instagram.com" target="_blank">
+                                        <svg  xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600 hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8.75 2.25a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Facebook -->
+                                    <a href="https://facebook.com" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600  hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M13.25 22V13h3.09l.46-3.6h-3.55V7.34c0-1.04.29-1.75 1.79-1.75h1.91V2.12A26.57 26.57 0 0 0 14.5 2c-2.6 0-4.38 1.58-4.38 4.48v2.92H7.06V13h3.06v9h3.13Z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Twitter -->
+                                    <a href="https://twitter.com" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600  hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22 5.92a8.4 8.4 0 0 1-2.36.64 4.1 4.1 0 0 0 1.8-2.28 8.23 8.23 0 0 1-2.6 1 4.13 4.13 0 0 0-7 3.76A11.7 11.7 0 0 1 3 4.62a4.1 4.1 0 0 0 1.28 5.5 4.17 4.17 0 0 1-1.87-.5v.05a4.13 4.13 0 0 0 3.3 4.06 4 4 0 0 1-1.86.07 4.14 4.14 0 0 0 3.86 2.85 8.3 8.3 0 0 1-5.1 1.76A8.5 8.5 0 0 1 2 18.07a11.6 11.6 0 0 0 6.29 1.85c7.55 0 11.68-6.2 11.68-11.58v-.52A8 8 0 0 0 22 5.92Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="relative group overflow-hidden m-8 md:m-0 h-[600px] md:h-auto">
+                        <figure class="">
+                            <img class=" w-full h-full object-cover" src="img/shane-bradman-1.jpg" alt="">
+                        </figure>
+
+                        <div class="w-full h-[150px] bg-[#e1eaf8] -bottom-40 left-0 absolute pl-7 group-hover:block group-hover:bottom-0 opacity-0 group-hover:opacity-100 transform  duration-500 ">
+                            <h3 class="flex w-full text-3xl font-bold py-2">shane bradman</h3>
+                            <p class="flex w-full text-xl py-2 text-gray-600">Product Designer</p>
+                            
+                                <div class="flex space-x-4 ">
+                                    <!-- Instagram -->
+                                    <a href="https://instagram.com" target="_blank">
+                                        <svg  xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600 hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8.75 2.25a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Facebook -->
+                                    <a href="https://facebook.com" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600  hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M13.25 22V13h3.09l.46-3.6h-3.55V7.34c0-1.04.29-1.75 1.79-1.75h1.91V2.12A26.57 26.57 0 0 0 14.5 2c-2.6 0-4.38 1.58-4.38 4.48v2.92H7.06V13h3.06v9h3.13Z"/>
+                                        </svg>
+                                    </a>
+                                    
+                                    <!-- Twitter -->
+                                    <a href="https://twitter.com" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600  hover:text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22 5.92a8.4 8.4 0 0 1-2.36.64 4.1 4.1 0 0 0 1.8-2.28 8.23 8.23 0 0 1-2.6 1 4.13 4.13 0 0 0-7 3.76A11.7 11.7 0 0 1 3 4.62a4.1 4.1 0 0 0 1.28 5.5 4.17 4.17 0 0 1-1.87-.5v.05a4.13 4.13 0 0 0 3.3 4.06 4 4 0 0 1-1.86.07 4.14 4.14 0 0 0 3.86 2.85 8.3 8.3 0 0 1-5.1 1.76A8.5 8.5 0 0 1 2 18.07a11.6 11.6 0 0 0 6.29 1.85c7.55 0 11.68-6.2 11.68-11.58v-.52A8 8 0 0 0 22 5.92Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                 </section>
+                 <!-- /////////////////////////////////////////////////////////////////////////////end -->
+                 <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto  my-20 md:h-70 md:flex md:items-center capitalize ">
+                    <div class="w-full md:w-1/2 *:py-4 *:capitalize">
+                        <h2 class="text-4xl md:text-5xl font-bold ">articles & resources</h2>
+                        <p class="text-3xl md:text-4xl text-gray-600 ">latest industry news</p>
+                    </div>
+                    <div class="w-full md:w-1/2 flex md:justify-end ">
+                        <a class="w-55 h-15  flex justify-center items-center mt-10 text-xl bg-[#eb451f] hover:bg-[#ee5519] duration-300 font-bold text-white" href="">More Services  ≫</a>
+                    </div>
+                  </section>
+                 <!-- /////////////////////////////////////////////////////////////////////////////end -->
+                  <section class="w-full px-8 md:px-2 md:w-[80%] md:mx-auto md:grid md:grid-cols-3 gap-12 py-8 ">
+                    <div class="h-[550px] group overflow-hidden">
+                        <figure class="h-1/2 overflow-hidden w-[70%] md:w-auto">
+                            <img class="w-full h-full object-cover duration-300 hover:scale-110" src="img/blog-factory-construction-2.jpg" alt="">
+                        </figure>
+                        <div class="h-1/2   px-6 group-hover:-translate-y-3 duration-300 ">
+                            <a class="w-fit text-orange-500 border-dotted mt-6 mb-3 flex hover:text-[#35668d] border-b-2 hover:underline hover:border-b-0" href="">Construction</a><br>
+                            <a class="w-full text-3xl hover:text-[#35668d] border-b-2  " href="">Construction of a new energy block started in western region</a>
+                        </div>
+                    </div>
+                    <div class="h-[550px] group overflow-hidden">
+                        <figure class="h-1/2 overflow-hidden w-[70%] md:w-auto">
+                            <img class="w-full h-full object-cover duration-300 hover:scale-110" src="img/blog-millions-investment-1.jpg" alt="">
+                        </figure>
+                        <div class="h-1/2   px-6 group-hover:-translate-y-3 duration-300 ">
+                            <a class="w-fit text-orange-500 border-dotted mt-6 mb-3 flex hover:text-[#628eb3] border-b-2 hover:underline hover:border-b-0" href="">Investment</a><br>
+                            <a class="w-full text-3xl hover:text-[#35668d] border-b-2 " href="">Securing $10 million in investment to upscale production facilities</a>
+                        </div>
+                    </div>
+                    <div class="h-[550px] group overflow-hidden ">
+                        <figure class="h-1/2 overflow-hidden w-[70%] md:w-auto ">
+                            <img class="w-full h-full object-cover duration-300 hover:scale-110" src="img/blog-supply-chain-2.jpg" alt="">
+                        </figure>
+                        <div class="h-1/2  px-6 group-hover:-translate-y-3 duration-300 ">
+                            <a class="w-fit text-orange-500 border-dotted mt-6 mb-3 flex hover:text-[#35668d] border-b-2 hover:underline hover:border-b-0"  href="">Development, Featured</a><br>
+                            <a class="text-3xl hover:text-[#35668d] border-b-2 " href="">Avada Factory quality assurance matching internationl demands</a>
+                        </div>
+                    </div>
+                  </section>
+                  <!-- ////////////////////////////////////////////////////////////////////////////////////footer -->
+                   <section class="w-full px-8 md:px-0 md:w-[100%] md:mx-auto grid grid-rows-3 md:grid-cols-3 md:grid-rows-1  gap-2 md:items-center mt-20 py-10 bg-[#111111]" >
+                    <div class="flex justify-center  items-center mx-auto py-4 px-8 w-[95%] capitalize md:w-fit bg-gray-800 hover:bg-[#2c4052] duration-300 cursor-pointer ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 font-bold text-[#35668d]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3a1 1 0 0 1 1 1v10.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1ZM4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z"/>
+                        </svg>
+                        <a  class="text-white text-xl" href="">annual factory report</a>
+                    </div>
+                    <div class="flex justify-center  items-center mx-auto py-4 px-8 w-[95%] capitalize md:w-fit bg-gray-800 hover:bg-[#2c4052] duration-300 cursor-pointer ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 font-bold text-[#35668d]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3a1 1 0 0 1 1 1v10.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1ZM4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z"/>
+                        </svg>
+                        <a  class="text-white text-xl" href="">manufacturing guide</a>
+                    </div>
+                    <div class="flex justify-center  items-center mx-auto py-4 px-8 w-[95%] capitalize md:w-fit bg-gray-800 hover:bg-[#2c4052] duration-300 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 font-bold text-[#35668d]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3a1 1 0 0 1 1 1v10.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1ZM4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z"/>
+                        </svg>
+                        <a  class="text-white text-xl" href=""> avada factory profile</a>
+                    </div>
+                   </section>
+                   <!-- ////////////////////////////////////////////////////////////////////////////////endd -->
+                   <div class="bg-custom w-full  bg-[#111111] md:mx-auto py-15 bg-blend-color-burn  bg-cover bg-center md:bg-[1px_0px]">
+
+                   
+                    <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto md:flex capitalize text-white ">
+                        <div class="w-full md:w-[35%] py-6 px-5 overflow-hidden">
+                            <h3 class="text-4xl  font-bold capitalize ">revolutionizing the economy with quality products.</h3>
+                        </div>
+                        <div class="w-full md:w-[65%] py-6 px-5">
+                            <p class="text-3xl font-bold">Signup for our newsletter</p>
+                            <div class=" pt-9 md:flex justify-center items-center ">
+                                <input class="capitalize w-full md:w-[80%] outline-none mb-6 border-b-2 border-white hover:border-orange-500 duration-300 py-4" type="email" placeholder="enter your email*">
+                                <a class="w-full md:ml-8 flex justify-center items-center text-xl text-white bg-amber-600 hover:bg-[#35668d] duration-300 md:w-[20%] font-bold py-4 px-7" href="">Subscribe</a>
+                            </div>
+                        </div>
+                    </section>
+                     <!-- ////////////////////////////////////////////////////////////////////////////////endd -->
+                      <section class="w-full px-8 md:px-0 md:w-[80%] md:mx-auto md:flex overflow-hidden md:h-[250px] ">
+                        <div class="w-full md:w-[30%]  px-4">
+                            <div class="flex ">
+                                <figure class="w-[60%] h-[60%] md:w-[80%] md:h-[80%] ">
+                                    <img src="img/facrory-logo.png" alt="">
+                                </figure>
+                            </div>
+                            
+                            <div class="flex space-x-4 w-fit  *:border-white  my-8 *:rounded">
+                                <!-- Instagram -->
+                                <a class="w-12 h-12 flex justify-center items-center rounded " href="https://instagram.com" target="_blank">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" class="w-full h-full duration-300 text-gray-600 rounded hover:text-black hover:bg-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8.75 2.25a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                                    </svg>
+                                </a>
+                                
+                                <!-- Facebook -->
+                                <a class="w-12 h-12 flex justify-center items-center rounded " href="https://facebook.com" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full duration-300 text-gray-600 rounded hover:text-black hover:bg-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13.25 22V13h3.09l.46-3.6h-3.55V7.34c0-1.04.29-1.75 1.79-1.75h1.91V2.12A26.57 26.57 0 0 0 14.5 2c-2.6 0-4.38 1.58-4.38 4.48v2.92H7.06V13h3.06v9h3.13Z"/>
+                                    </svg>
+                                </a>
+                                
+                                <!-- Twitter -->
+                                <a class="w-12 h-12 flex justify-center items-center rounded " href="https://twitter.com" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full duration-300 rounded text-gray-600  hover:text-black hover:bg-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M22 5.92a8.4 8.4 0 0 1-2.36.64 4.1 4.1 0 0 0 1.8-2.28 8.23 8.23 0 0 1-2.6 1 4.13 4.13 0 0 0-7 3.76A11.7 11.7 0 0 1 3 4.62a4.1 4.1 0 0 0 1.28 5.5 4.17 4.17 0 0 1-1.87-.5v.05a4.13 4.13 0 0 0 3.3 4.06 4 4 0 0 1-1.86.07 4.14 4.14 0 0 0 3.86 2.85 8.3 8.3 0 0 1-5.1 1.76A8.5 8.5 0 0 1 2 18.07a11.6 11.6 0 0 0 6.29 1.85c7.55 0 11.68-6.2 11.68-11.58v-.52A8 8 0 0 0 22 5.92Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-[70%] px-4 grid grid-rows-3 md:grid-cols-3 md:grid-rows-1 md:gap-5 md:px-6 text-white">
+                            <div class="w-full h-full *:flex *:py-6 capitalize">
+                                <h3 class=" flex text-3xl ">USA office</h3>
+                                <p class=" text-2xl text-gray-600 ">3345 Main St. Queens,New York – 11435 United States</p>
+                            </div>
+                            <div class="w-full h-full *:flex *:py-6 capitalize">
+                                <h3 class=" flex text-3xl ">asia pacific</h3>
+                                <p class=" text-2xl text-gray-600 ">66 Industries Avenue,
+                                    Jurong East – 9870
+                                    Singapore</p>
+                            </div>
+                            <div class="w-full h-full *:flex  *:capitalize">
+                                <h3 class=" flex text-3xl py-6">say hello</h3>
+                                <p class=" text-2xl text-gray-600 ">P : (800) 555 5555</p>
+                                <p class=" text-2xl text-gray-600 py-2">E : hello[at]avada-comp.com</p>
+                            </div>
+                        </div>
+                      </section>
+                    </div>
+                    <!-- //////////////////////////////////////////////////////////////////////////////end -->
+                <div class="">
+                        <div class="myfooter">
+            
+                        
+                        <a href="https://instagram.com/mohammadreza_jalalifar">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+                                <path d="M 16 3 C 8.8545455 3 3 8.8545455 3 16 L 3 34 C 3 41.145455 8.8545455 47 16 47 L 34 47 C 41.145455 47 47 41.145455 47 34 L 47 16 C 47 8.8545455 41.145455 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.054545 5 45 9.9454545 45 16 L 45 34 C 45 40.054545 40.054545 45 34 45 L 16 45 C 9.9454545 45 5 40.054545 5 34 L 5 16 C 5 9.9454545 9.9454545 5 16 5 z M 37 11 C 35.9 11 35 11.9 35 13 C 35 14.1 35.9 15 37 15 C 38.1 15 39 14.1 39 13 C 39 11.9 38.1 11 37 11 z M 25 14 C 18.954545 14 14 18.954545 14 25 C 14 31.045455 18.954545 36 25 36 C 31.045455 36 36 31.045455 36 25 C 36 18.954545 31.045455 14 25 14 z M 25 16 C 29.954545 16 34 20.045455 34 25 C 34 29.954545 29.954545 34 25 34 C 20.045455 34 16 29.954545 16 25 C 16 20.045455 20.045455 16 25 16 z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/Mr_jalalifar">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 64 64">
+                                <path d="M 32 10 C 19.85 10 10 19.85 10 32 C 10 44.15 19.85 54 32 54 C 44.15 54 54 44.15 54 32 C 54 19.85 44.15 10 32 10 z M 32 14 C 41.941 14 50 22.059 50 32 C 50 41.941 41.941 50 32 50 C 22.059 50 14 41.941 14 32 C 14 22.059 22.059 14 32 14 z M 41.041016 23.337891 C 40.533078 23.279297 39.894891 23.418531 39.181641 23.675781 C 37.878641 24.145781 21.223719 31.217953 20.261719 31.626953 C 19.350719 32.014953 18.487328 32.437828 18.486328 33.048828 C 18.486328 33.478828 18.741312 33.721656 19.445312 33.972656 C 20.177313 34.234656 22.023281 34.79275 23.113281 35.09375 C 24.163281 35.38275 25.357344 35.130844 26.027344 34.714844 C 26.736344 34.273844 34.928625 28.7925 35.515625 28.3125 C 36.102625 27.8325 36.571797 28.448688 36.091797 28.929688 C 35.611797 29.410688 29.988094 34.865094 29.246094 35.621094 C 28.346094 36.539094 28.985844 37.490094 29.589844 37.871094 C 30.278844 38.306094 35.239328 41.632016 35.986328 42.166016 C 36.733328 42.700016 37.489594 42.941406 38.183594 42.941406 C 38.877594 42.941406 39.242891 42.026797 39.587891 40.966797 C 39.992891 39.725797 41.890047 27.352062 42.123047 24.914062 C 42.194047 24.175062 41.960906 23.683844 41.503906 23.464844 C 41.365656 23.398594 41.210328 23.357422 41.041016 23.337891 z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="mailto:jalalifarmohammadreza@gmail.com">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+                                <path d="M 14 4 C 8.4886661 4 4 8.4886661 4 14 L 4 36 C 4 41.511334 8.4886661 46 14 46 L 36 46 C 41.511334 46 46 41.511334 46 36 L 46 14 C 46 8.4886661 41.511334 4 36 4 L 14 4 z M 14 6 L 36 6 C 40.430666 6 44 9.5693339 44 14 L 44 36 C 44 40.430666 40.430666 44 36 44 L 14 44 C 9.5693339 44 6 40.430666 6 36 L 6 14 C 6 9.5693339 9.5693339 6 14 6 z M 13 15 C 11.35503 15 10 16.35503 10 18 L 10 32 C 10 33.64497 11.35503 35 13 35 L 37 35 C 38.64497 35 40 33.64497 40 32 L 40 18 C 40 16.35503 38.64497 15 37 15 L 13 15 z M 13.414062 17 L 36.583984 17 L 27.677734 25.892578 C 26.18494 27.382984 23.796834 27.382819 22.304688 25.890625 L 13.414062 17 z M 38 18.412109 L 38 31.587891 L 31.402344 25 L 38 18.412109 z M 12 18.414062 L 18.585938 25 L 12 31.585938 L 12 18.414062 z M 29.988281 26.412109 L 36.585938 33 L 13.414062 33 L 20 26.414062 L 20.890625 27.304688 C 23.146478 29.56054 26.832638 29.562194 29.089844 27.308594 L 29.988281 26.412109 z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/Mrjalalifar">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 64 64">
+                                <path d="M32 6C17.641 6 6 17.641 6 32c0 12.277 8.512 22.56 19.955 25.286-.592-.141-1.179-.299-1.755-.479V50.85c0 0-.975.325-2.275.325-3.637 0-5.148-3.245-5.525-4.875-.229-.993-.827-1.934-1.469-2.509-.767-.684-1.126-.686-1.131-.92-.01-.491.658-.471.975-.471 1.625 0 2.857 1.729 3.429 2.623 1.417 2.207 2.938 2.577 3.721 2.577.975 0 1.817-.146 2.397-.426.268-1.888 1.108-3.57 2.478-4.774-6.097-1.219-10.4-4.716-10.4-10.4 0-2.928 1.175-5.619 3.133-7.792C19.333 23.641 19 22.494 19 20.625c0-1.235.086-2.751.65-4.225 0 0 3.708.026 7.205 3.338C28.469 19.268 30.196 19 32 19s3.531.268 5.145.738c3.497-3.312 7.205-3.338 7.205-3.338.567 1.474.65 2.99.65 4.225 0 2.015-.268 3.19-.432 3.697C46.466 26.475 47.6 29.124 47.6 32c0 5.684-4.303 9.181-10.4 10.4 1.628 1.43 2.6 3.513 2.6 5.85v8.557c-.576.181-1.162.338-1.755.479C49.488 54.56 58 44.277 58 32 58 17.641 46.359 6 32 6zM33.813 57.93C33.214 57.972 32.61 58 32 58 32.61 58 33.213 57.971 33.813 57.93zM37.786 57.346c-1.164.265-2.357.451-3.575.554C35.429 57.797 36.622 57.61 37.786 57.346zM32 58c-.61 0-1.214-.028-1.813-.07C30.787 57.971 31.39 58 32 58zM29.788 57.9c-1.217-.103-2.411-.289-3.574-.554C27.378 57.61 28.571 57.797 29.788 57.9z">
+                                </path>
+                            </svg>
+                        </a>
+                        
+                        <img src="img/prof.jpeg " alt="">
+                    </div>
+                </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer utilities{
+    .img1{
+        @apply animate-[img1_15s_linear_infinite];
+
+    }
+    .img2{
+        
+        @apply animate-[img2_15s_linear_infinite];
+    }
+    .img3{
+        @apply animate-[img3_15s_linear_infinite];
+
+    }
+    .links{
+        @apply animate-[links_0.6s_linear_infinite];
+    }
+    .moveBall{
+        @apply animate-[moveBall_3s_linear_infinite];
+    }
+
+}
+
+@keyframes img1 {
+    0% {
+        opacity: 1;
+    }
+
+    31% {
+        opacity: 1;
+    }
+
+    35% {
+        opacity: 0;
+    }
+
+    35.00001% {
+        opacity: 0;
+    }
+
+    96% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+@keyframes img2 {
+    0% {
+        opacity: 0;
+    }
+
+    31% {
+        opacity: 0;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    64% {
+        opacity: 1;
+    }
+
+    68% {
+        opacity: 0;
+    }
+
+    68.0001% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+@keyframes img3 {
+    0% {
+        opacity: 0;
+    }
+
+    64% {
+        opacity: 0;
+    }
+
+    68% {
+        opacity: 1;
+    }
+
+    96% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes moveBall {
+    0% { left: 0; }
+    50% { left: 350px; }
+    100% { left: 0; }
+  }
